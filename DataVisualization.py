@@ -101,12 +101,23 @@ plt.title("Survival by Age")
 plt.xticks(np.arange(2), ('Dead', 'Alive'),rotation=0)
 plt.ylabel('%')
 
+# Male survived vs deceased
 plt.subplot2grid((2, 3), (0, 2))
 df.Pclass.value_counts(normalize='True').plot(kind='bar', alpha=alpha_bar_chart)
 plt.title("Survival by Class")
 plt.ylabel('%')
 
+plt.subplot2grid((2, 3), (1, 0), colspan=2)
+for x in [1, 2, 3]:
+    df.Age[df.Pclass == x].plot(kind='kde')
+plt.title("Class wrt Age")
+plt.legend(('1st', '2nd', '3rd'), frameon=False)
 
+
+plt.subplot2grid((2, 3), (1, 2))
+df.Embarked.value_counts(normalize='True').plot(kind='bar', alpha=alpha_bar_chart)
+plt.title("Survival by Class")
+plt.ylabel('%')
 
 plt.tight_layout(pad=0.5, w_pad=1.0, h_pad=1.0)
 plt.show()
