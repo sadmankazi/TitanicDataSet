@@ -99,7 +99,7 @@ plt.subplot2grid((2, 3), (0, 1))
 plt.scatter(df.Survived, df.Age, alpha=0.1)
 plt.title("Survival by Age")
 plt.xticks(np.arange(2), ('Dead', 'Alive'),rotation=0)
-plt.ylabel('%')
+plt.ylabel('Age')
 
 # Male survived vs deceased
 plt.subplot2grid((2, 3), (0, 2))
