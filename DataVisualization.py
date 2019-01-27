@@ -111,7 +111,7 @@ plt.subplot2grid((2, 3), (1, 0), colspan=2)
 for x in [1, 2, 3]:
     df.Age[df.Pclass == x].plot(kind='kde')
 plt.title("Class wrt Age")
-plt.legend(('1st', '2nd', '3rd'), frameon=False)
+plt.legend(("1st Class", "2nd Class", "3rd Class"), frameon=False)
 
 
 plt.subplot2grid((2, 3), (1, 2))
