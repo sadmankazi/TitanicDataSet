@@ -8,8 +8,8 @@ plt.close('all')
 df = pd.read_csv("./data/train.csv")
 
 # total number of females:
-# num_females = df["Sex"].value_counts()
-# print(num_females)
+# num_females = df["Sex"].value_counts().values
+# print(num_females[1])
 #
 # number of females survived:
 # female_survived = df.Survived[df.Sex == "female"].value_counts()
@@ -39,7 +39,8 @@ df.loc[df["Embarked"] == "C", "Embarked"] = 1
 df.loc[df["Embarked"] == "Q", "Embarked"] = 2
 
 target = df['Survived'].values
-features = df[['Sex', 'Age', 'Pclass', 'Embarked', 'Fare']].values
+featnames = ['Sex', 'Age', 'Pclass', 'Embarked', 'Fare']
+features = df[featnames].values
 
 decision_tree = tree.DecisionTreeClassifier(random_state=1, max_depth=7)
 decision_tree_ = decision_tree.fit(features, target)
@@ -50,3 +51,5 @@ scores = model_selection.cross_val_score(decision_tree, features, target, scorin
 
 print(scores)
 print(scores.mean())
+
+tree.export_graphviz(decision_tree_, feature_names=featnames, out_file="tree.dot")

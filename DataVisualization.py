@@ -6,19 +6,20 @@ plt.close('all')
 
 df = pd.read_csv("./data/train.csv")
 
-# print(df.shape)
-# print(df.count())
-# print(df.describe())
+print(df.shape)
+print(df.count())
+print(df.describe())
+
 
 fig = plt.figure(figsize=(12, 6))
 alpha = alpha_scatterplot = 0.2
-alpha_bar_chart = 0.5
+alpha_bar_chart = 0.7
 
 # Survived vs Deceased
 plt.subplot2grid((3, 4), (0, 0))
 df.Survived.value_counts(normalize='True').plot(kind='bar', alpha=alpha_bar_chart)
 plt.title("Total Survival")
-plt.xticks(np.arange(2), ('Dead', 'Alive'),rotation=0)
+plt.xticks(np.arange(2), ('Dead', 'Alive'), rotation=0)
 plt.ylabel('%')
 
 # Male survived vs deceased
@@ -121,3 +122,4 @@ plt.ylabel('%')
 
 plt.tight_layout(pad=0.5, w_pad=1.0, h_pad=1.0)
 plt.show()
+
